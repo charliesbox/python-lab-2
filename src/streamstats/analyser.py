@@ -1,4 +1,4 @@
-from parsers import parse_event, read_jsonl, read_csv
+from .parsers import parse_event, read_jsonl, read_csv
 
 def analyze(event_generator):
     amount_events = 0
