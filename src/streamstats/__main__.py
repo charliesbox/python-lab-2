@@ -1,11 +1,12 @@
-import sys
 import argparse
 import logging
+import sys
 
 from .analyser import analyze
 from .errors import StreamStatsError
 from .parsers import parse_event, read_csv, read_jsonl
 from .report import write_data
+
 
 def build_parser():
     parser = argparse.ArgumentParser(

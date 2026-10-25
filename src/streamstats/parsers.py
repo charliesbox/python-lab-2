@@ -1,9 +1,10 @@
-import json
 import csv
+import json
 import logging
 from datetime import datetime, timezone
+
 from .errors import EventError, TimestampError
-from .models import Level, Event
+from .models import Event, Level
 
 logger = logging.getLogger(__name__)
 

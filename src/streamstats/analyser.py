@@ -1,4 +1,3 @@
-from .parsers import parse_event, read_jsonl, read_csv
 
 def analyze(event_generator):
     amount_events = 0
@@ -43,7 +42,7 @@ def analyze(event_generator):
         return (-top[1], top[0])
 
 
-    pairs = sorted(list(error_sources.items()), key=sort_key)[:5]
+    pairs = sorted((error_sources.items()), key=sort_key)[:5]
 
     return {
         "total": amount_events,
