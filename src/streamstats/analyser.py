@@ -50,6 +50,6 @@ def analyze(event_generator):
         "levels": amount_levels,
         "sources": amount_sources,
         "top5": pairs,
-        "earliest": earliest_timestamp.isoformat(),
-        "latest": latest_timestamp.isoformat()
+        "earliest": earliest_timestamp.isoformat() if earliest_timestamp is not None else None,
+        "latest": latest_timestamp.isoformat() if latest_timestamp is not None else None
     }

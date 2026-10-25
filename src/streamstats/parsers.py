@@ -71,9 +71,9 @@ def validate_event(raw):
 
     try:
         # this automatically convets the timezone into UTC time
-        timestamp = datetime.fromisoformat(raw["timestamp"]).astimezone(timezone.utc)
+        timestamp = datetime.fromisoformat(raw["timestamp"])
         if timestamp.tzinfo is None:
-                    timestamp = timestamp.replace(tzinfo=timezone.utc)
+                    timestamp = timestamp.replace(tzinfo=timezone.utc).astimezone(timezone.utc)
     except ValueError:
         raise TimestampError(f"The timestamp argument is broken: {raw['timestamp']}")
 
