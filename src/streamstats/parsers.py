@@ -1,8 +1,8 @@
 import json
 import csv
 from datetime import datetime, timezone
-from errors import EventError, TimestampError   #TODO: add relative import (.errors)
-from models import Level, Event
+from .errors import EventError, TimestampError
+from .models import Level, Event
 
 def read_jsonl(path):
     with open(path, encoding="utf-8") as file:
