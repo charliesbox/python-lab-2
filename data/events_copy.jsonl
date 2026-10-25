@@ -1,0 +1,45 @@
+{"timestamp": "2026-10-07T12:00:00+03:00", "level": "INFO", "source": "loader", "message": "Начало чтения файла"}
+{"timestamp": "2026-10-07T12:00:02+03:00", "level": "DEBUG", "source": "loader", "message": "Открыт файл data/participants.txt"}
+{"timestamp": "2026-10-07T09:00:05+00:00", "level": "INFO", "source": "api", "message": "Получен запрос GET /users"}
+{"timestamp": "2026-10-07T12:00:07+03:00", "level": "INFO", "source": "auth", "message": "Пользователь anna вошла в систему"}
+{"timestamp": "2026-10-07T12:00:10+03:00", "level": "WARNING", "source": "api", "message": "Медленный ответ, 1200 мс"}
+{"timestamp": "2026-10-07T12:00:15+03:00", "level": "ERROR", "source": "db", "message": "Нет соединения с базой"}
+{"timestamp": "2026-10-07T12:00:16+03:00", "level": "ERROR", "source": "db", "message": "Таймаут запроса"}
+{"timestamp": "2026-10-07T09:00:20+00:00", "level": "INFO", "source": "cache", "message": "Кэш прогрет"}
+{"timestamp": "2026-10-07T12:00:25+03:00", "level": "DEBUG", "source": "cache", "message": "Ключ user:42 не найден"}
+{"timestamp": "2026-10-07T12:00:30+03:00", "level": "ERROR", "source": "api", "message": "Ошибка 500 на /orders"}
+{"timestamp": "2026-10-07T04:00:35-05:00", "level": "INFO", "source": "scheduler", "message": "Запущена задача cleanup"}
+{"timestamp": "2026-10-07T12:00:40+03:00", "level": "WARNING", "source": "auth", "message": "Три неудачные попытки входа"}
+{"timestamp": "2026-10-07T12:00:45+03:00", "level": "ERROR", "source": "auth", "message": "Неверный токен"}
+{"timestamp": "2026-10-07T09:00:50+00:00", "level": "INFO", "source": "mailer", "message": "Отправлено письмо"}
+{"timestamp": "2026-10-07T12:00:55+03:00", "level": "ERROR", "source": "mailer", "message": "SMTP недоступен"}
+{"timestamp": "2026-10-07T12:01:00+03:00", "level": "INFO", "source": "payments", "message": "Платёж принят"}
+{"timestamp": "2026-10-07T12:01:05+03:00", "level": "CRITICAL", "source": "db", "message": "Диск базы заполнен на 99%"}
+{"timestamp": "2026-10-07T12:01:10+03:00", "level": "ERROR", "source": "payments", "message": "Отказ банка"}
+{"timestamp": "2026-10-07T12:01:15+03:00", "level": "ERROR", "source": "payments", "message": "Дублирующая транзакция"}
+{"timestamp": "2026-10-07T12:01:20+03:00", "level": "INFO", "source": "loader", "message": "Прочитано 1000 строк"}
+{"timestamp": "2026-10-07T12:01:25+03:00", "level": "WARNING", "source": "cache", "message": "Кэш почти заполнен"}
+{"timestamp": "2026-10-07T12:01:30+03:00", "level": "ERROR", "source": "cache", "message": "Потеряно соединение с Redis"}
+{"timestamp": "2026-10-07T12:01:35+03:00", "level": "INFO", "source": "api", "message": "Запрос POST /orders, статус 201"}
+{"timestamp": "2026-10-07T12:01:40+03:00", "level": "ERROR", "source": "db", "message": "Взаимная блокировка транзакций"}
+{"timestamp": "2026-10-07T12:01:45+03:00", "level": "INFO", "source": "scheduler", "message": "Задача cleanup завершена"}
+{"timestamp": "2026-10-07T12:01:50+03:00", "level": "ERROR", "source": "api", "message": "Ошибка 502 от внешнего сервиса"}
+{"timestamp": "2026-10-07T12:01:55+03:00", "level": "CRITICAL", "source": "payments", "message": "Платёжный шлюз не отвечает"}
+{"timestamp": "2026-10-07T12:02:00+03:00", "level": "DEBUG", "source": "auth", "message": "Проверка срока токена"}
+{"timestamp": "2026-10-07T12:02:05+03:00", "level": "ERROR", "source": "db", "message": "Нарушение уникального ключа"}
+{"timestamp": "2026-10-07T12:02:10+03:00", "level": "ERROR", "source": "cache", "message": "Тайм-аут записи в кэш"}
+{"timestamp": "2026-10-07T12:02:15+03:00", "level": "WARNING", "source": "db", "message": "Медленный запрос, 3 с"}
+{"timestamp": "2026-10-07T12:02:20+03:00", "level": "ERROR", "source": "api", "message": "Неверный формат JSON в теле запроса"}
+{"timestamp": "2026-10-07T12:02:25+03:00", "level": "ERROR", "source": "scheduler", "message": "Задача backup не запустилась"}
+{"timestamp": "2026-10-07T12:02:30+03:00", "level": "INFO", "source": "auth", "message": "Пользователь илья вышел из системы"}
+{"timestamp": "2026-10-07T12:02:35+03:00", "level": "ERROR", "source": "db", "message": "Ошибка репликации"}
+{"timestamp": "2026-10-07T12:02:40+03:00", "level": "CRITICAL", "source": "auth", "message": "Подозрительная активность, аккаунт заблокирован"}
+{"timestamp": "2026-10-07T12:02:45+03:00", "level": "ERROR", "source": "loader", "message": "Не удалось прочитать файл: кодировка"}
+{"timestamp": "2026-10-07T12:02:50+03:00", "level": "INFO", "source": "mailer", "message": "Очередь писем пуста"}
+{"timestamp": "2026-10-07T12:02:55+03:00", "level": "ERROR", "source": "payments", "message": "Неверная сумма платежа"}
+{"timestamp": "2026-10-07T12:03:00+03:00", "level": "INFO", "source": "api", "message": "Параметры: user=anna, sort=date, limit=10"}
+{"timestamp": "2026-10-07T12:03:05+03:00", "jj": "WARNING", "source": "loader", "message": "Строка содержит \"кавычки\" внутри"}
+{"timestamp": "2026-10-07T12:03:10+03:00", "level": "ERROR", "source": "db", "message": "Ошибка запроса:\nSELECT * FROM users\nWHERE id = 42"}
+{"timestamp": "вчера", "level": "INFO", "source": "cache", "message": "Emoji и юникод: café, 日本語, 🚀"}
+{"timestamp": "2026-10-07T11:30:00+03:00", "level": "INFO", "source": "loader", "message "Служебная запись: самое раннее событие"}
+{"timestamp": "2026-10-07T07:15:00-05:00", "level": "INFO", "source": "scheduler", "message": "Служебная запись: самое позднее событи
