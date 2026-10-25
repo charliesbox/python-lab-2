@@ -1,5 +1,6 @@
 import sys
 import argparse
+import logging
 
 from .analyser import analyze
 from .errors import StreamStatsError
@@ -34,17 +35,19 @@ def build_parser():
 
 READERS = {"csv": read_csv, "jsonl": read_jsonl}
 
-def read_all(paths, reader):
+def read_all(paths, reader, skip_invalid, counters):
     for path in paths:
-        yield from reader(path)
+        yield from reader(path, skip_invalid, counters)
 
 
 def main():
+    logging.basicConfig(format="%(levelname)s: %(message)s")
     args = build_parser().parse_args()
     reader = READERS[args.format]
+    counters = {"skipped": 0}
     try:
-        raw_records = read_all(args.files, reader)
-        events = parse_event(raw_records)
+        raw_records = read_all(args.files, reader, args.skip_invalid, counters)
+        events = parse_event(raw_records, args.skip_invalid, counters)
         result = analyze(events)
     except StreamStatsError as error:
         print(f"Error: {error}", file=sys.stderr)
@@ -52,7 +55,7 @@ def main():
     except OSError as error:
         print(f"Error: cannot read file: {error}", file=sys.stderr)
         sys.exit(2)
-    print(result)
+    print(result, "skipped:", counters["skipped"])
 
 
 if __name__ == "__main__":

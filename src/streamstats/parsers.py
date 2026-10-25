@@ -1,21 +1,39 @@
 import json
 import csv
+import logging
 from datetime import datetime, timezone
 from .errors import EventError, TimestampError
 from .models import Level, Event
 
-def read_jsonl(path):
+logger = logging.getLogger(__name__)
+
+def register_skip(counters, message):
+    logger.warning(message)
+    if counters is not None:
+        counters["skipped"] += 1
+
+
+def read_jsonl(path, skip_invalid=False, counters=None):
     with open(path, encoding="utf-8") as file:
         for number, line in enumerate(file, start=1):
+            text = line.strip()
+            if text == "":
+                continue
             try:
-                if line.strip() != "":
-                    event = json.loads(line.strip())
-                    yield number, event, path
+                record = json.loads(text)
             except json.JSONDecodeError:
-                raise EventError(f"Jsonl event {number} log at {path} is broken.")
+                message = f"Jsonl event {number} log at {path} is broken."
+                if not skip_invalid:
+                    raise EventError(message)
+                register_skip(counters, f"Skipped: {message}")
+                continue
+            yield number, record, path
 
 
-def read_csv(path):
+def read_csv(path, skip_invalid=False, counters=None):
+    # skip_invalid is accepted only so both readers have the same signature.
+    # A broken CSV (e.g. an unclosed quote) cannot be skipped: it is unknown
+    # where the next record starts.
     with open(path, encoding="utf-8", newline="") as file:
         reader = csv.DictReader(file, strict=True)
         try:
@@ -26,12 +44,16 @@ def read_csv(path):
             raise EventError(f"CSV event {reader.line_num} at {path} is broken.")
 
 
-def parse_event(generator):
+def parse_event(generator, skip_invalid=False, counters=None):
     for number, raw, path in generator:
         try:
             event = validate_event(raw)
-        except EventError as error:
-            raise EventError(f"Event {number} at {path} failed validation: {error}.")
+        except (EventError, TimestampError) as error:
+            message = f"Event {number} at {path} failed validation: {error}."
+            if not skip_invalid:
+                raise EventError(message)
+            register_skip(counters, f"Skipped: {message}")
+            continue
         yield event
 
 
