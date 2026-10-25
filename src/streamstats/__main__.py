@@ -5,6 +5,7 @@ import logging
 from .analyser import analyze
 from .errors import StreamStatsError
 from .parsers import parse_event, read_csv, read_jsonl
+from .report import write_data
 
 def build_parser():
     parser = argparse.ArgumentParser(
@@ -49,13 +50,15 @@ def main():
         raw_records = read_all(args.files, reader, args.skip_invalid, counters)
         events = parse_event(raw_records, args.skip_invalid, counters)
         result = analyze(events)
+        result["skipped"] = counters["skipped"]
+        write_data(result, args.output)
     except StreamStatsError as error:
         print(f"Error: {error}", file=sys.stderr)
         sys.exit(2)
     except OSError as error:
         print(f"Error: cannot read file: {error}", file=sys.stderr)
         sys.exit(2)
-    print(result, "skipped:", counters["skipped"])
+    print("Report saved to report.json")
 
 
 if __name__ == "__main__":

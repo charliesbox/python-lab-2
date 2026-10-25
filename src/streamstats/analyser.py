@@ -45,4 +45,11 @@ def analyze(event_generator):
 
     pairs = sorted(list(error_sources.items()), key=sort_key)[:5]
 
-    return amount_events, amount_levels, amount_sources, pairs, earliest_timestamp, latest_timestamp
+    return {
+        "total": amount_events,
+        "levels": amount_levels,
+        "sources": amount_sources,
+        "top5": pairs,
+        "earliest": earliest_timestamp.isoformat(),
+        "latest": latest_timestamp.isoformat()
+    }
